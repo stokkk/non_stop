@@ -3,16 +3,12 @@ import sys
 
 
 class IObserver(ABC):
-
 	@abstractmethod
 	def update(data):
 		pass
 
 
-
 class IPublisher(ABC):
-
-
 	@abstractmethod
 	def addSub(self, sub):
 		pass
@@ -27,10 +23,8 @@ class IPublisher(ABC):
 
 
 class Forbec(IPublisher):
-
 	def __init__(self, subs=[]):
 		self._subs = subs
-		self.notifyAllSubs("Forbec: we opening!")
 
 	def addSub(self, sub):
 		self._subs.append(sub)
@@ -54,4 +48,4 @@ class Observer(IObserver):
 if __name__ == "__main__":
 	obs = [Observer(o) for o in range(10)]
 	f = Forbec(obs)
-
+	f.notifyAllSubs('Forbec: we opening!')
